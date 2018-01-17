@@ -9,6 +9,26 @@ var choose = function (num) {
 }
 // ---------------
 
+var LinearRun = function () {
+  var chosenExamples = (process.env.EXAMPLE || '1e').split(',');
+  Promise.each(choosenExamples, function (choosenExample) {
+    switch (chosenExample) {
+      case '0':
+        return withoutPromise();
+      case '1':
+        return usingPromise_1();
+      case '2':
+        return usingPromise_2();
+      case '3':
+        return usingPromise_3();
+      default:
+        return;
+    }
+  })
+}
+
+LinearRun();
+
 var withoutPromise = function () {
   console.log(' - without promise - step#1');
 
@@ -25,8 +45,6 @@ var withoutPromise = function () {
   console.log(' - without promise - step#5');
 }
 
-choose('0') && withoutPromise();
-
 /*
 output will be:
  - without promise - step#1
@@ -39,7 +57,7 @@ output will be:
 var usingPromise_1 = function () {
   console.log(' - using promise 1 - step#1');
 
-  Promise.resolve()
+  return Promise.resolve()
     .then(function () {
       return new Promise(function (onResolved) {
         setTimeout(function () {
@@ -72,8 +90,6 @@ var usingPromise_1 = function () {
       console.log(' - using promised function 2 - handle error:', error.toString());
     })
 }
-
-choose('1') && usingPromise_1();
 
 /*
  - using promise - step#1
@@ -133,8 +149,6 @@ var usingPromise_2 = function () {
     .catch(_handle_error)
 }
 
-choose('2') && usingPromise_2();
-
 /*
  - using promised function - step#1
  - using promised function - step#2
@@ -187,7 +201,6 @@ var usingPromise_3 = function () {
   }).catch(_handle_error)
 }
 
-choose('3') && usingPromise_3();
 
 /*
  - using promised function - step#1
