@@ -1,13 +1,19 @@
 {
-  "name": "promise-start-stop-servers",
+  "name": "log-message-collection",
   "version": "0.1.0",
-  "description": "",
+  "description": "Log message collection example",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/tdd/*-test.js"
+    "test": "node_modules/.bin/mocha test/bdd/*-test.js"
   },
   "author": "pnhung177",
   "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "logolite": "^0.1.5",
+    "winston": "^2.4.0"
+  },
   "devDependencies": {
     "bluebird": "^3.5.1",
     "chai": "^4.1.2",
@@ -16,9 +22,5 @@
     "lodash": "^4.17.4",
     "mocha": "^4.1.0",
     "node-fetch": "^1.7.3"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2"
   }
 }
